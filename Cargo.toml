@@ -1,0 +1,6 @@
+[package]
+name = "mascheroni"
+version = "0.1.0"
+authors = ["Frederick Ollinger <fred.ollinger@seescan.com>"]
+
+[dependencies]
