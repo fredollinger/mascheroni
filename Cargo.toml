@@ -2,6 +2,7 @@
 name = "mascheroni"
 version = "0.1.0"
 authors = ["Frederick Ollinger <fred.ollinger@seescan.com>"]
+description = "Math library for writing and profiling algorithms"
 license = "MIT"
 
 [dependencies]
