@@ -3,6 +3,38 @@ use std::fs::OpenOptions;
 use std::io::prelude::*;
 use std::path::Path;
 
+/// Given a number, check to see if it's
+/// a is_palindrome.
+///
+/// A is_palindrome is the same each ways
+/// for example:
+///
+/// 1001 is a palindrome as is 1001001
+///
+/// But 71 and 1101 are not is_palindromes.
+///
+/// example:
+///
+/// let mut num = 2002;
+/// println!("Is num palindrome? {} {}", num, is_palindrome(num));
+///
+/// num = 71;
+/// println!("Is num palindrome? {} {}", num, is_palindrome(num));
+fn is_palindrome(num: u64) -> bool {
+    let bar = num.to_string();
+    let bytes = bar.as_bytes();
+    let len = bytes.len();
+    let limit: i32 = len as i32;
+
+    for x in 0..len {
+        if bytes[x] != bytes[len-x-1] {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 /// Write a number to a given filename
 ///
 /// If the file all ready exists, the number will be appended.
@@ -28,13 +60,13 @@ pub fn write_num(num: u64, fname: &str) -> std::io::Result<()>
     return Ok(());
 }
 
-pub fn public_function() {
-    println!("called rary's `public_function()`");
+#[test]
+fn test_is_not_palindrome() {
+    assert!(is_palindrome(71), false);
 }
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-    }
+#[test]
+fn test_is_palindrome() {
+    assert!(is_palindrome(1001001), true);
 }
+
