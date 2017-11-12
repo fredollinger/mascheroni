@@ -24,7 +24,6 @@ fn is_palindrome(num: u64) -> bool {
     let bar = num.to_string();
     let bytes = bar.as_bytes();
     let len = bytes.len();
-    let limit: i32 = len as i32;
 
     for x in 0..len {
         if bytes[x] != bytes[len-x-1] {
