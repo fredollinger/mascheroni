@@ -20,7 +20,7 @@ use std::path::Path;
 ///
 /// num = 71;
 /// println!("Is num palindrome? {} {}", num, is_palindrome(num));
-fn is_palindrome(num: u64) -> bool {
+pub fn is_palindrome(num: u64) -> bool {
     let bar = num.to_string();
     let bytes = bar.as_bytes();
     let len = bytes.len();
