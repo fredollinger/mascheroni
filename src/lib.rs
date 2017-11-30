@@ -72,6 +72,33 @@ pub fn write_num(num: u64, fname: &str) -> std::io::Result<()>
     return Ok(());
 }
 
+/// Read a comma delimited file into
+/// a vector of u64 numbers.
+pub fn read_nums(fname: &str) -> Vec<u64>
+{
+    let mut file = File::open(fname).expect("file not found");
+    let mut contents = String::new();
+    let res = file.read_to_string(&mut contents);
+    let mut vec = Vec::new();
+    match res {
+        Ok(_) => {
+            let v: Vec<&str> = contents.split(',').collect();
+            for i in v {
+                let res = string2u64(i);
+                match res {
+                    Ok(n) => {
+                        println!("SUCCESS [{}]", n);
+                        vec.push(n);
+                    },
+                    Err(_) => { println!("Error [{}]", i) },
+                }
+            }
+        },
+        Err(_) => { println!("Error") }
+    }
+    return vec;
+}
+
 #[test]
 fn test_string2u64() {
     let res = string2u64("asdjflsdjfslj10");
