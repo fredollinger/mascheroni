@@ -1,6 +1,6 @@
 [package]
 name = "mascheroni"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Frederick Ollinger <follinge@gmail.com>"]
 description = "Math library for writing and profiling algorithms"
 license = "MIT"

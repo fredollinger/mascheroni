@@ -2,6 +2,7 @@ use std::fs::File;
 use std::fs::OpenOptions;
 use std::io::prelude::*;
 use std::path::Path;
+use std::str::FromStr;
 
 /// Given a number, check to see if it's
 /// a is_palindrome.
@@ -34,6 +35,18 @@ pub fn is_palindrome(num: u64) -> bool {
     return true;
 }
 
+/// Given a string convert it to u64
+pub fn string2u64(st: &str) -> std::result::Result<u64, std::num::ParseIntError> {
+    let mut ret: u64 = 0;
+    let mut ret_str = String::from("");
+    for c in st.chars() {
+        if c.is_digit(10) {
+        ret_str.push(c);
+        }
+    }
+    u64::from_str(&ret_str)
+}
+
 /// Write a number to a given filename
 ///
 /// If the file all ready exists, the number will be appended.
@@ -60,6 +73,15 @@ pub fn write_num(num: u64, fname: &str) -> std::io::Result<()>
 }
 
 #[test]
+fn test_string2u64() {
+    let res = string2u64("asdjflsdjfslj10");
+    match res {
+        Ok(n) => { assert_eq!(n, 10); },
+        Err(_) => { assert!(false); }
+    }
+}
+
+// #[test]
 fn test_is_not_palindrome() {
     assert!(is_palindrome(71), false);
 }
