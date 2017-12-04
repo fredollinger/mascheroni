@@ -87,14 +87,14 @@ pub fn read_nums(fname: &str) -> Vec<u64>
                 let res = string2u64(i);
                 match res {
                     Ok(n) => {
-                        println!("SUCCESS [{}]", n);
+                        // println!("SUCCESS [{}]", n);
                         vec.push(n);
                     },
-                    Err(_) => { println!("Error [{}]", i) },
+                    Err(_) => { /* println!("Error [{}]", i) */ },
                 }
             }
         },
-        Err(_) => { println!("Error") }
+        Err(_) => { /* println!("Error") */ }
     }
     return vec;
 }
